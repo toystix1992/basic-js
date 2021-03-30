@@ -1,8 +1,10 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function repeater(str, options) {
-  typeof str === "string"? str : str.toString();
-  typeof options === "string"? options : options.toString();
+  typeof str === "string"? str : String(str);
+  typeof options === "string"? options : String(options);
+  str === null? str = "null": str;
+  options.addition === null? options.addition = "null": options.addition;
   !options.separator? options.separator = '+' : options.separator;
   !options.additionSeparator? options.additionSeparator = '|' : options.additionSeparator;
   const repeatTimes = options.repeatTimes;
