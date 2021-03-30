@@ -2,6 +2,7 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
   if(!date) return 'Unable to determine the time of year!';
+  if (isNaN(date)) throw new Error;
 
   let Month = date.getMonth() + 1;
   if (Month <= 2 || Month == 12) return 'winter';
